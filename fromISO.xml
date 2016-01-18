@@ -1,0 +1,33 @@
+<domain type='kvm'>
+<name>rub</name>
+<memory unit='KiB'>4194304</memory>
+<vcpu>1</vcpu>
+<os>
+    <type arch='x86_64' machine='rhel6.6.0'>hvm</type>
+    <boot dev='hd'/>
+    <boot dev='cdrom'/>
+</os>
+<clock offset='utc'/>
+<on_poweroff>destroy</on_poweroff>
+<on_reboot>restart</on_reboot>
+<on_crash>destroy</on_crash>
+<devices>
+<emulator>/usr/libexec/qemu-kvm</emulator>
+<disk type='file' device='disk'>
+<source file='/opt/vm-images/rub.img'/>
+<driver name='qemu' type='raw'/>
+<target dev='hda'/>
+</disk>
+<disk type='file' device='cdrom'>
+<source file='/home/CentOS-6.6-x86_64-minimal.iso'/>
+<target dev='hdc' bus='ide'/>
+</disk>
+
+<interface type='bridge'>
+<mac address='52:54:00:d8:65:ff'/>
+<source bridge='br1'/>
+</interface>
+<input type='mouse' bus='ps2'/>
+<graphics type='vnc' port='-1' listen='127.0.0.1'/>
+</devices>
+</domain>
