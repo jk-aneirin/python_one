@@ -4,9 +4,9 @@
 <vcpu>1</vcpu>
 <os>
 <type arch='x86_64' machine='pc'>hvm</type>
-<kernel>/home/xuliang/vmlinuz</kernel>
-<initrd>/home/xuliang/initrd.img</initrd>
-<cmdline>method=http://mirrors.163.com/centos/6.7/os/x86_64/ console=ttyS0 console=tty</cmdline>
+<kernel>/var/lib/libvirt/boot/vmlinuz</kernel>
+<initrd>/var/lib/libvirt/boot/initrd.img</initrd>
+<cmdline>method=http://downloads.mycentos.com/centos/6/x86_64 console=ttyS0 console=tty</cmdline>
 </os>
 <clock offset='utc'/>
 <on_poweroff>destroy</on_poweroff>

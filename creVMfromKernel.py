@@ -3,7 +3,7 @@ from __future__ import print_function
 import sys
 import libvirt
 from xml.etree import ElementTree
-f=open("fromKernel.xml","r")
+f=open("fromKernel_1.xml","r")
 xmlconfig=f.read()
 
 conn = libvirt.open('qemu:///system')
