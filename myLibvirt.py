@@ -30,7 +30,7 @@ class Opevm():
                         exit(1)
 	def nodeCapabilities(self):
 		print("Capabilites:\n"+self.conn.getCapabilities())
-	def getNodename(self):
+	def getNodeName(self):
 		print("Node's name is:"+self.conn.getHostname())
 	def getMaxVcpusperGuest(self):
 		print('Maximum support virtual CPUS:'+str(self.conn.getMaxVcpus(None)))
@@ -43,7 +43,7 @@ class Opevm():
 		print('Number of CPU sockets:'+str(self.conn.getInfo()[5]))
 		print('Number of CPU cores per socket:'+str(self.conn.getInfo()[6]))
 		print('Number of CPU threads per core:'+str(self.conn.getInfo()[7]))
-	def listDomNames(self):
+	def disAllDomNames(self):
 		'''function listAllDomains() is ok too'''
 		domainNames = self.conn.listDefinedDomains()
 		if domainNames == None:
@@ -58,6 +58,20 @@ class Opevm():
 		print("All (active and inactive domain names):")
 		for domainName in domainNames:
 			print(' '+domainName)
+	def disAcDomNameIds(self):
+        	domName=[]
+        	domId=[]
+        	domIDs=self.conn.listDomainsID()
+        	if domIDs==None:
+                	print('Failed to get a list of domain IDs', file=sys.stderr)
+        	if len(domIDs)==0:
+                	print('None')
+        	else:
+                	for domid in domIDs:
+                        	domName.append(domid)
+		                domId.append(self.conn.lookupByID(domid).name())
+
+        	print(dict(zip(domName,domId)))
 	def provisionGuest(self,flag):
 		pass
 	def setvCPUs(self,name,num):
@@ -168,7 +182,6 @@ class Opevm():
 		self.conn.close()
 if __name__=="__main__":
 	vm=Opevm(1,'192.168.0.42')
-	vm.getINFO()
-	vm.nodeCapabilities()
+	vm.disAcDomNameIds()
 	vm.conn_close()
 	

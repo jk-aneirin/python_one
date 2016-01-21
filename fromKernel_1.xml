@@ -6,7 +6,11 @@
 <type arch='x86_64' machine='pc'>hvm</type>
 <kernel>/var/lib/libvirt/boot/vmlinuz</kernel>
 <initrd>/var/lib/libvirt/boot/initrd.img</initrd>
+<<<<<<< HEAD
 <cmdline>method=http://downloads.mycentos.com/centos/6/x86_64 console=ttyS0 console=tty</cmdline>
+=======
+<cmdline>method=http://mirrors.163.com/centos/6.7/os/x86_64/ console=ttyS0 console=tty</cmdline>
+>>>>>>> 79751df7ec4a05dabde62df492931f92cced0882
 </os>
 <clock offset='utc'/>
 <on_poweroff>destroy</on_poweroff>
