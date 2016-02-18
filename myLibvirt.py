@@ -9,6 +9,8 @@ from xml.dom import minidom
 
 class Opevm():
 	conn=None
+	###variant "ct" controls connection for local or remote
+  	###ct=0,connect to local;ct=1 or else,connect to remote
 	def __init__(self,ct=0,remote_ip=None):
 		if ct==0:
 			self.connect_local()
@@ -30,18 +32,18 @@ class Opevm():
 		if self.conn==None:
 			print("Failed to open remote connection",file=sys.stderr)
                         exit(1)
-
-	def nodeCapabilities(self):
+	###display Host's features
+	def disNodeCapabilities(self):
 		print("Capabilites:\n"+self.conn.getCapabilities())
 
-	def getNodeName(self):
+	def disNodeName(self):
 		print("Node's name is:"+self.conn.getHostname())
 
-	def getMaxVcpusperGuest(self):
+	def disMaxVcpusperGuest(self):
 		print('Maximum support virtual CPUS:'+str(self.conn.getMaxVcpus(None)))
 
 	###Display Host info
-	def getINFO(self):
+	def disINFO(self):
 		print('Model:'+str(self.conn.getInfo()[0]))
 		print('Memory size:'+str(self.conn.getInfo()[1])+'MB')
 		print('Number of CPUs:'+str(self.conn.getInfo()[2]))

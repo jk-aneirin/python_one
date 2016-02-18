@@ -1,0 +1,6 @@
+这个仓库包含KVM虚机的安装（适合KVM单机虚拟化），libvirt的python接口封装。
+creVMfromHD.py：从宿主机虚拟硬盘文件安装虚拟机
+creVMfromKernel.py：从内核文件安装虚拟机
+creVMfromISO.py：从ISO操作系统镜像文件安装虚拟机
+fromKernel_1.xml、 fromKernel_2.xml、fromISO.xml，三个文件是上述脚本执行时依赖的虚机配置文件。
+myLibvirt.py：依赖于libvirt-python包，对该包提供的API接口进行封装，通过一个类呈现出来。
